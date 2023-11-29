@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Modelación Matematica</title>
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,500&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mpld3/0.5.5/mpld3.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Datos proporcionados
+            var years = [2018, 2019, 2020, 2021, 2022];
+            var students = [196, 148, 143, 107, 75];
+
+            // Pronóstico para los próximos 3 años
+            var futureYears = [2023, 2024, 2025];
+            var predictedStudents = [53, 32, 19]; // Datos pronosticados que calculaste
+
+            // Crear el DataTable de Google Charts
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Años');
+            data.addColumn('number', 'Estudiantes');
+
+            // Agregar datos históricos
+            for (var i = 0; i < years.length; i++) {
+                data.addRow([years[i], students[i]]);
+            }
+
+            // Agregar datos pronosticados
+            for (var i = 0; i < futureYears.length; i++) {
+                data.addRow([futureYears[i], predictedStudents[i]]);
+            }
+
+            // Opciones del gráfico
+            var options = {
+                title: 'Estudiantes por año',
+                hAxis: {
+                    title: 'Años',
+                    minValue: 2018,
+                    maxValue: 2025
+                },
+                vAxis: {
+                    title: 'Estudiantes',
+                    minValue: 0
+                },
+                trendlines: {
+                    0: {
+                        type: 'exponential',
+                        visibleInLegend: true
+                    }
+                },
+            };
+
+            // Crear el gráfico de dispersión
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <style>
+        .grafico {
+            display: flex;
+            justify-content: center;
+        }
+
+        #grafico-container {
+            width: 100%;
+            /* Ajusta según sea necesario */
+            margin: auto;
+        }
+
+        #piechart {
+            width: 100%;
+            height: 400px;
+            /* Ajusta según sea necesario */
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar-container">
+            <nav>
+                <a href="#contenedor-introduccion">Nuestro Proyecto</a>
+                <a href="#contenedor-explicacion">Explicacion y uso de las fórmulas</a>
+                <a href="#contenedor-planteamiento">Informacion de la carrera</a>
+                <a href="#contenido-desinformacion">Desercion de los estudiantes</a>
+            </nav>
+            <div class="Logo">
+                <a href="https://www.umm.edu.mx/" target="_blank" rel="noreferrer">
+                    <img id="Logo" src="img/logo-oficial-umm-md-blanco.png" alt="Logo de la pagina">
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="textos-header">
+            <h1>Crecimiento Poblacional de LTI con Bases en Pascal </h1>
+        </section>
+        <section class="contenedor introduccion">
+            <div id="contenedor-introduccion">
+                <h2 class="titulo">Nuestro Proyecto</h2>
+                <div class="contenedor-proyecto">
+
+                    <div class="contenedor-introduccion">
+                        <h3>Introducción de nuestro proyecto</h3>
+                        <p>
+                            El proyecto se centra en abordar el problema de estudiantes que abandonan la educación
+                            superior. Utilizamos la fórmula de crecimiento exponencial, aprendida al estudiar el
+                            triángulo de Pascal, para encontrar soluciones. Nos esforzaremos a buscar soluciones que
+                            permitan a todos seguir con su educación y aprovechar las valiosas oportunidades académicas que ofrece la UMM.
+                        </p>
+                    </div>
+                    <div class="imagen-4"> <img src="img/imagen-4.jpg" alt="" class="imagen-introduccion"></div>
+
+                </div>
+
+        </section>
+        <section class="contenedor formula">
+            <div id="contenedor-explicacion">
+                <h2 class="titulo">Explicación y uso de las fórmulas</h2>
+                <div class="contenedor-formula">
+                    <div class="contenedor-explicacion">
+                        <h3>La fórmula de Crecimiento Exponencial: Modelando Cambios Constantes en el Tiempo.</h3>
+                        <p>
+                            La fórmula de crecimiento exponencial describe el crecimiento o decrecimiento de una
+                            cantidad a
+                            lo largo del tiempo de acuerdo con una tasa constante. En el contexto de la población
+                            estudiantil, la fórmula exponencial es: \(P(t) = P_0 \times e^{rt}\)
+                        </p>
+                        <div class="contenedor-donde">
+                            <h4>Donde:</h4>
+                            <p> \(P(t)\) es la cantidad o población en el tiempo \(t\).</p>
+                            <p> \(P_0\) es la cantidad o población inicial en el momento \(t=0\).</p>
+                            <p> \(e\) es la base del logaritmo natural, aproximadamente igual a 2.71828.</p>
+                            <p> \(r\) es la tasa de crecimiento o decrecimiento por unidad de tiempo.</p>
+                            <p> \(t\) es el tiempo transcurrido.</p>
+                            <p>La fórmula de crecimiento exponencial es: \(P(t) = P_0 \times e^{rt}\)</p>
+
+                            <p>
+                                Esta fórmula se utiliza comúnmente para modelar situaciones en las que la tasa de cambio
+                                de
+                                una cantidad es proporcional a la cantidad misma. Cuando \(r > 0\), la cantidad aumenta
+                                exponencialmente con el tiempo, y cuando \(r < 0\) , la población decrece
+                                exponencialmente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="chart_div2" style="width: 100%; height: 400px;"></div>
+
+            </div>
+        </section>
+
+        <section class="contenedor planteamiento">
+            <div id="contenedor-planteamiento">
+                <h2 class="titulo">Información de la carrera</h2>
+                <div class="contenedor-proyecto1">
+                    <div class="contenedor-planteamiento">
+                        <h3>¿Qué es la Licenciatura en Tecnologías de la Información?</h3>
+                        <p>
+                            La Licenciatura en Tecnologías de la Información (LTI) prepara profesionistas capacitados
+                            para
+                            implementar y gestionar tecnologías relacionadas con la Informática y la Computación en
+                            Organizaciones Públicas y Privadas.
+                        </p>
+                        <h3>LTI en la UMM</h3>
+                        <p>
+                            La UMM te prepara para impulsar el desarrollo estratégico de las empresas, a través del uso
+                            y
+                            aprovechamiento de la tecnología informática.
+                        </p>
+                    </div>
+                    <div class="contenedor-video">
+                        <h3>Por qué estudiar Tecnologías de la Información</h3>
+                        <iframe width="400" height="215"
+                            src="https://www.youtube.com/embed/M-FigBhJOjE?si=ixJxDy_NKhdCZRlS"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <section class="contenedor Descripcion">
+            <div class="contenedor-todo">
+                <div class="contenedor-datos">
+                    <h2 class="titulo">Datos Históricos</h2>
+                    <div class="contenido-textos3">
+                        <h3>Contexto Histórico.</h3>
+                        <p>
+                            La computación moderna surgió a finales de la década de los treinta y en los cuarenta, etapa
+                            en la que se llevaron a cabo proyectos de investigación vinculados a universidades que
+                            demostraron la factibilidad de las computadoras.
+                        </p>
+                        <h3>Análisis de la Matriculación y Graduación en Tecnologías de la Información en México</h3>
+                        <p>
+                            Las Tecnologías de la Información y Comunicación (TIC) han emergido como una de las
+                            disciplinas más destacadas en el panorama laboral, tanto público como privado. Por esta
+                            razón, resulta de suma importancia para nosotros comprender a fondo el desarrollo y la
+                            evolución de esta carrera.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grafico">
+                    <script type="text/javascript">
+                        google.charts.load('current', {
+                            'packages': ['corechart']
+                        });
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Alumnos', 'Alumnos por año'],
+                                ['2018', 196],
+                                ['2019', 148],
+                                ['2020', 143],
+                                ['2021', 107],
+                                ['2022', 75]
+                            ]);
+
+                            var options = {
+                                title: 'Alumnos Egresados',
+                                is3D: false,
+                                titleTextStyle: {
+                                    textAlign: 'auto'
+                                }
+                            }
+
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+                    <div id="grafico-container">
+                        <div id="piechart"></div>
+                    </div>
+                </div>
+        </section>
+        <section class="contenedor informacion">
+            <div class="contenedor-info">
+                <img src="img/imagen-1.jpg" alt="" class="imagen-informacion">
+                <div class="contenido-textos4">
+                    <h2 class="dato">Datos Interesantes</h2>
+                    <h3><span>!</span>Según Josep Bricall:</h3>
+                    <p>"Al menos una cuarta parte de los estudiantes que finalizan la enseñanza secundaria en países
+                        como Australia, Canadá, Dinamarca, Islandia, Holanda, Nueva Zelanda, Suiza y Estados Unidos
+                        utilizan la computadora diariamente"</p>
+                    <h3><span>!</span>Relevancia de las Tecnologías de la Información en el Mercado Laboral Actual
+                    </h3>
+                    <p>El mercado laboral sufrió un breve tropiezo después de la era del COVID-19, pero en el último
+                        año
+                        ha experimentado un crecimiento ascendente, como se había anticipado años atrás. Según la
+                        página
+                        web Hireline, "En México, se registró un aumento del 22% en la oferta de empleos
+                        tecnológicos
+                        durante 2022 en comparación con 2021". </p>
+                    <p>Esta informacion fue sacada de la siguiente pagina, <a
+                            href="https://hireline.io/mx/estudio-mercado-laboral-y-empleos-de-ti-mexico"
+                            target="_blank">Ir a la página externa</a></p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="contenedor">
+                <div id="contenido-desinformacion">
+                    <div class="contenedor-estudiantes">
+                        <h2 class="titulo">Deserción de los estudiantes</h2>
+                        <div class="contenido-desinformacion">
+                            <h3>Desinformación</h3>
+                            <p>
+                                Una de las principales razones de deserción es porque los estudiantes no conocen o están
+                                desinformados de los apoyos que pueden recibir para que continúen sus estudios, y al
+                                sentir que ya no pueden seguir, se van.
+                            </p>
+                            <h3>Orientación</h3>
+                            <p>
+                                A veces puede ocurrir que los estudiantes no reciben la correcta orientación sobre las
+                                soluciones que puedan recibir, o estos no conocen con detalle los apoyos que la UMM
+                                ofrece.
+                            </p>
+                        </div>
+                        <div class="contenedor-umm">
+                            <h3>Estrategias que la UMM implemento para los estudiantes</h3>
+                            <h4><span>1</span>Coach</h4>
+                            <p>Los coach son personas encargadas de los estudiantes para que durante sus primeros cuatro
+                                tetramestres tengan la correcta orientación y apoyo para una mejor y rápida adaptación
+                                al
+                                ambiente estudiantil que se maneja, así como darles seguimiento a posibles situaciones
+                                que
+                                puedan ocurrir </p>
+                            <h4><span>2</span>Becas</h4>
+                            <p>La UMM también cuenta con un sistema de becas las cuales apoyan monetariamente a los
+                                estudiantes
+                                para no tener complicaciones al momento de tener que pagar las mensualidades y que esta
+                                no
+                                sea
+                                un motivo por el cual abandonen.</p>
+                            <h4><span>3</span>Orientación psicológica</h4>
+                            <p>La UMM ofrece ayuda psicológica gratuita sus estudiantes, esto es muy útil ya que las
+                                personas
+                                que no se encuentren mentalmente o tienen una problemática que les gustaría compartir
+                                con
+                                alguien para recibir puedan hacerlo libremente.</p>
+                            <h4><span>4</span>Flexibilidad de horarios</h4>
+                            <p>El horario que maneja la UMM es útil para los estudiantes que trabajan para pagar sus
+                                estudios ya
+                                que el horario nocturno que se ofrece les ofrece esa disponibilidad de trabajar y
+                                estudiar,
+                                además del aula Flex que permite mejor distribución.</p>
+                            <h4><span>5</span>Aula Flex</h4>
+                            <p>También se cuenta con la modalidad Aula Flex la cual permite a los estudiantes no solo
+                                asistir a
+                                un salón de clases, sino que también a un aula virtual la cual ayuda para hacer uso de
+                                las
+                                plataformas digitales y adaptarse más a un entorno virtual que es lo más usado en la
+                                actualidad.
+                            </p>
+                            <h4><span>6</span>Fomenta la participación activa</h4>
+                            <p>Crea oportunidades para que los estudiantes se involucren activamente en proyectos,
+                                eventos y
+                                actividades relacionadas con su campo de estudio.</p>
+                        </div>
+                        <div class="contenedor-propuesta">
+                            <h3>Nuestra propuesta de solución</h3>
+                            <p>La principal solución para abordar esta problemática es darles a conocer a los
+                                estudiantes
+                                que no
+                                están solos y tienen muchas herramientas y soluciones para sus problemas ya sean
+                                personales
+                                y
+                                económicas y que la UMM siempre está abierta para apoyar a sus estudiantes siempre que
+                                le
+                                sea
+                                posible.</p>
+                            <h3>Propuestas:</h3>
+                            <h4><span>1</span>Programas de Mentoría</h4>
+                            <p>Implementa programas de mentoría donde alumnos más experimentados puedan guiar y apoyar a
+                                estudiantes más nuevos. La mentoría puede ser valiosa para la adaptación y el éxito
+                                académico.
+                            </p>
+                            <h4><span>2</span>Análisis de Causas</h4>
+                            <p>Identifica las razones específicas por las cuales los alumnos se dan de baja. Puedes
+                                realizar
+                                encuestas, entrevistas o análisis de datos para comprender mejor los motivos detrás de
+                                la
+                                deserción.</p>
+                            <h4><span>3</span>Orientación y Asesoramiento</h4>
+                            <p>Proporciona servicios de orientación académica y profesional. Un buen asesoramiento puede
+                                ayudar
+                                a los estudiantes a superar desafíos académicos, personales o profesionales que puedan
+                                estar
+                                afectando su rendimiento.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+            <section class="Final">
+                <div class="contenedor">
+
+                    <div class="contenedor-final">
+                        <div class="contenedor-texto">
+                            <p>Recordemos que cada grupo de estudiantes puede tener desafíos específicos, por lo que es
+                                importante adaptarse a la realidad y necesidades de nuestro problema.</p>
+                        </div>
+                        <div class="contenedor-frase">
+                            <h2>TODOS SOMOS LEONES</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <div class="contenedor-footer">
+            <div class="contenido-foo">
+                <h4>Teléfono Ingenierías</h4>
+                <p>81 8130 7900 (ext. 5008, 6001)</p>
+            </div>
+            <div class="contenido-foo">
+                <h4>Email</h4>
+                <p>info@umm.edu.mx</p>
+            </div>
+            <div class="contenido-foo">
+                <h4>Dirección</h4>
+                <p>J. S. Aramberri #829 entre Villagómez y Amado Nervo, Centro, Monterrey, Nuevo León</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; Equipo 3 | Proyecto Modelación Matemática</h2>
+    </footer>
+</body>
+
+</html>
